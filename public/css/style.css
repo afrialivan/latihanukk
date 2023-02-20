@@ -1,0 +1,102 @@
+body {
+  overflow-x: hidden;
+}
+.text-blue {
+  color: #0090D4 !important;
+}
+.bg-blue {
+  background-color: #0090D4 !important;
+}
+nav {
+  transition: .3s;
+  z-index: 999;
+}
+.foto {
+  width: 50px;
+  height: 50px;
+  overflow: hidden;
+}
+.foto img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+
+}
+.notif {
+  font-size: calc(1rem + ((1vw - 7.68px) * 0.6944));
+}
+
+.hero-img {
+  margin-top: -40px;
+  width: 100vw;
+  z-index: -99;
+  overflow: hidden;
+  height: calc(30rem + ((1vw - 7.68px) * 0.6944));
+}
+.hero-img img {
+  object-fit: cover;
+  width: 100%;
+  height: 100%;
+  font-size: calc();
+}
+
+.navbar-brand img {
+  width: 150px;
+}
+
+.kotak {
+  box-sizing: border-box;
+  max-width: 700px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, .4);
+}
+
+h2 {
+  font-size: calc(2rem + ((1vw - 7.68px) * 0.6944));
+}
+p {
+  font-size: calc(1rem + ((1vw - 7.68px) * 0.6944));
+}
+.animasi1 {
+  width: calc(20rem + ((1vw - 7.68px) * 0.6944));
+}
+
+.kotak-profil {
+  min-height: calc(90px - 10vw);
+}
+
+.foto-profil {
+  max-width: calc(10px + 8vw);
+  max-height: calc(10px + 8vw);
+  overflow: hidden;
+}
+
+.foto-profil img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.header-foto {
+  flex-direction: row;
+}
+
+/* mobile */
+@media screen and (min-width: 576px){
+  
+}
+
+/* tablet */
+@media screen and (min-width: 768px){
+  
+}
+
+/* laptop */
+@media screen and (min-width: 992px) {
+  .header-foto {
+    flex-direction: column;
+  }
+
+  .foto-profil img {
+    width: 100%;
+    height: 100%;
+  }
+}

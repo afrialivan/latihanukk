@@ -1,0 +1,17 @@
+body {
+  height: 100vh;
+  overflow-x: hidden;
+}
+
+.login {
+  transform: translateY(2vh);
+  margin: 0 10px;
+}
+
+.formm {
+  padding: 30px 30px;
+}
+
+.login-img {
+  width: 15%;
+}
