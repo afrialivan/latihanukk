@@ -103,7 +103,21 @@ p {
   object-fit: cover;
 }
 
+.read-more {
+  display: block;
+  margin-top: -10px;
+}
 
+.foto-laporan {
+  width: 200px;
+  height: 200px;
+  overflow: hidden;
+}
+.foto-laporan img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
 
 
 /* mobile */

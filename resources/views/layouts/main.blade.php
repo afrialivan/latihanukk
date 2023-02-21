@@ -25,15 +25,14 @@
         @include('partials.navbar')
     @endif
 
-    @if ($title !== 'Laporan Saya')
+    @if ($title !== 'Laporan Saya' && $title !== 'Laporan')
         <div class="hero-img position-absolute">
             <img class="" src="img/bg.svg" alt="">
         </div>
     @endif
 
-    @if ($title == 'Laporan Saya')
+    @if ($title == 'Laporan Saya' || $title == 'Laporan')
         <div class="kotak-profil w-100 bg-blue shadow d-flex align-items-center position-relative">
-
             <div class="bg-animasi position-absolute"></div>
             <div class="bg-animasi position-absolute"></div>
             <div class="bg-animasi position-absolute"></div>
@@ -47,17 +46,22 @@
 
 
             <div class="container">
-                <div class="d-flex align-items-center header-foto">
-                    <div class="foto-profil rounded-circle bg-light ms-3 shadow">
-                        <img src="http://source.unsplash.com/200x200?person" alt="">
+                @if ($title == 'Laporan Saya')
+                    <div class="d-flex align-items-center header-foto">
+                        <div class="foto-profil rounded-circle bg-light ms-3 shadow">
+                            <img src="http://source.unsplash.com/200x200?person" alt="">
+                        </div>
+                        <div class="mt-lg-3 header-nama">
+                            <p class="fw-bold h3 text-light">{{ auth()->user()->nama }}</p>
+                        </div>
                     </div>
-                    <div class="mt-lg-3 header-nama">
-                        <p class="fw-bold h3 text-light">A. Muh. Afrial Ivan Pratama</p>
+                    <div class="d-grid mt-3">
+                        <a href="" class="btn btn-outline-light">Edit Profil</a>
                     </div>
-                </div>
-                <div class="d-grid mt-3">
-                    <a href="" class="btn btn-outline-light">Edit Profil</a>
-                </div>
+                @endif
+                @if ($title == 'Laporan')
+                    <p class="h1 text-center text-light">Semua Laporan</p>
+                @endif
             </div>
         </div>
     @endif

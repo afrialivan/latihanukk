@@ -25,4 +25,5 @@ Route::get('/register', [registerController::class, 'index']);
 Route::post('/register', [registerController::class, 'store']);
 
 Route::post('/pengaduan', [pengaduanController::class, 'store']);
+Route::get('/semualaporan', [pengaduanController::class, 'all']);
 Route::get('/laporansaya', [userController::class, 'index']);

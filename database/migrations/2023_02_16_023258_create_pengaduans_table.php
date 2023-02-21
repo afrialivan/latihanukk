@@ -16,7 +16,7 @@ class CreatePengaduansTable extends Migration
         Schema::create('pengaduans', function (Blueprint $table) {
             $table->id();
             $table->bigInteger('id_user');
-            $table->date('tgl_pengaduan');
+            $table->string('tgl_pengaduan');
             $table->text('isi_laporan');
             $table->text('foto');
             $table->enum('status', ['0', 'proses', 'selesai'])->default('0');

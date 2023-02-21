@@ -8,10 +8,10 @@
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav align-items-center">
                 <li class="nav-item">
-                    <a class="nav-link text-blue active" aria-current="page" href="#">Pengaduan</a>
+                    <a class="nav-link text-blue active" aria-current="page" href="/">Pengaduan</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Laporan</a>
+                    <a class="nav-link" href="/semualaporan">Laporan</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link notif" href="#"><i class="bi bi-bell-fill"></i></a>

@@ -22,36 +22,33 @@
     </ul>
 
     <div class="reports">
-        <div class="report">
-            <div class="row">
-                <div class="col-1">
-                    <img src="http://source.unsplash.com/100x100?person" class="rounded-circle d-none d-lg-block"
-                        alt="">
+        @foreach ($reports as $report)
+            <div class="report">
+                <div class="row">
+                    <div class="col-1">
+                        <img src="{{ asset('storage/' . $report->foto) }}" class="rounded-circle d-none d-lg-block"
+                            alt="">
+                    </div>
+                    <div class="col-12 col-lg-11 col-md-12 col-sm-12">
+                        <p class="h4 text-primary">{{ $report->user->nama }}</p>
+                        <p class="fs-6">{{ $report->tgl_pengaduan }}</p>
+                        <p class="fs-6 isiLaporan" id="isiLaporan">{{ $report->isi_laporan }}</p>
+                        <a  id="read-more" class="readMoreGakTuh text-decoration-none read-more mb-3 cursor">Lihat semua</aca>
+                        {{-- <a id="tutupReadMore" class="tutupReadMoreGakTuh text-decoration-none read-more d-none mb-3">Tutup</a> --}}
+                        <a class="mt-5 foto-laporans">
+                            <div class="foto-laporan">
+                                <img src="http://source.unsplash.com/200x200?report" alt="">
+                            </div>
+                        </a>
+                        <div class="d-flex mt-3">
+                            <a class="tanggapan text-decoration-none text-dark" href="">
+                                <i class="bi bi-chat-right-text me-2"></i> Tanggapan
+                            </a>
+                        </div>
+                    </div>
                 </div>
-                <div class="col-12 col-lg-11 col-md-12 col-sm-12">
-                    <p class="h4 text-primary">Prall Ivan</p>
-                    <p class="fs-6">21 April 2021, 21:00</p>
-                    <p class="fs-6" id="isiLaporan">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Eum quaerat consectetur
-                        aliquid ipsam et officiis, inventore nemo accusamus fugit ut fuga rerum cum ab hic esse debitis
-                        laudantium maxime tempore illo amet exercitationem ea? Ab itaque blanditiis laboriosam ipsam ratione
-                        molestiae ex unde quia! Excepturi maxime et provident nobis veniam ad ex, culpa fugiat laborum
-                        voluptates nisi error dicta at, ut accusantium veritatis amet dolorum laudantium quas. Qui
-                        repudiandae eligendi repellat quia! Voluptatem commodi repellendus dolores modi, vitae ab adipisci
-                        optio, sunt sed reprehenderit a maiores expedita, iste molestiae in delectus magnam voluptate est
-                        omnis dolorem! Corporis ad ipsum velit dignissimos, error libero nihil possimus, quidem praesentium
-                        quos quae magni facere deserunt commodi vitae a dolor assumenda nulla veritatis provident est!
-                        Beatae enim maiores repudiandae doloremque quisquam accusamus debitis ipsam perspiciatis ipsa.
-                        Ipsam, veniam inventore dolor eos tempore eaque consequatur aliquam aut repellat labore non quam,
-                        neque dolorum odio. Dignissimos vero debitis aliquam quos nisi fugiat delectus a aliquid iusto!
-                        Molestias quos, harum sint iste reprehenderit perferendis! Sint rerum mollitia assumenda doloremque
-                        qui porro atque at praesentium beatae dolorem ipsam, laboriosam facilis veritatis a perspiciatis
-                        soluta adipisci eaque. Dignissimos sapiente quae odit deleniti corporis quos impedit aliquam fugit.
-                        At, nobis.</p>
-                        <a id="read-more" class="text-decoration-none" href="#">Lihat semua</a>
-                        <a id="tutupReadMore" class="text-decoration-none d-none" href="#">Tutup</a>
-                </div>
+                <hr>
             </div>
-            <hr>
-        </div>
+        @endforeach
     </div>
 @endsection

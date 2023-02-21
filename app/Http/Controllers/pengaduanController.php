@@ -25,8 +25,12 @@ class pengaduanController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function all()
     {
+        return view('reports', [
+            'title' => 'Laporan',
+            'reports' => Pengaduan::latest()->get()
+        ]);
     }
 
     /**

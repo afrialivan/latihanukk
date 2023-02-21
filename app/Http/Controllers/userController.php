@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Pengaduan;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class userController extends Controller
@@ -15,7 +16,8 @@ class userController extends Controller
     public function index()
     {
         return view('laporanSaya', [
-            'title' => 'Laporan Saya'
+            'title' => 'Laporan Saya',
+            'reports' => Pengaduan::where('id_user', auth()->user()->id)->latest()->get()
         ]);
     }
 
