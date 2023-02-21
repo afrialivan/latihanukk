@@ -16,7 +16,6 @@ class pengaduanController extends Controller
     {
         return view('pengaduan', [
             'title' => 'Pengaduan',
-            // ''
         ]);
     }
 
@@ -53,9 +52,9 @@ class pengaduanController extends Controller
         );
 
         $validasi['id_user'] = auth()->user()->id;
-        if($request->file('foto')) {
-            $validasi['foto'] = $request->file('foto')->store('post-images');     
-        }
+
+        $foto = $request->file('foto');
+        $validasi['foto'] = $foto->storeAs('public/img', $foto->hashName());
 
         Pengaduan::create($validasi);
 

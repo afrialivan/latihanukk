@@ -50,6 +50,10 @@ document.querySelectorAll('.readMoreGakTuh').forEach(element => {
 
   element.previousElementSibling.innerHTML = paragraf.substring(0, 500)
   
+  if(paragraf.length < 800) {
+    element.classList.add('d-none')
+  }
+
   element.onclick = () => {
     toggle = !toggle
     

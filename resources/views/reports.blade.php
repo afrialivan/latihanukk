@@ -16,7 +16,7 @@
             <a id="read-more" class="readMoreGakTuh text-decoration-none read-more mb-3">Lihat semua</a>
             <a href="" class="mt-5">
                 <div class="foto-laporan">
-                    <img src="http://source.unsplash.com/200x200?report" alt="">
+                    <img src="{{ asset('storage/' . $report->foto) }}" alt="">
                 </div>
             </a>
             <div class="d-flex mt-3">

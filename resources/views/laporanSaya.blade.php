@@ -26,18 +26,16 @@
             <div class="report">
                 <div class="row">
                     <div class="col-1">
-                        <img src="{{ asset('storage/' . $report->foto) }}" class="rounded-circle d-none d-lg-block"
-                            alt="">
+                        <img src="img/profil.png" alt="" class="rounded-circle d-none d-lg-block">
                     </div>
                     <div class="col-12 col-lg-11 col-md-12 col-sm-12">
                         <p class="h4 text-primary">{{ $report->user->nama }}</p>
                         <p class="fs-6">{{ $report->tgl_pengaduan }}</p>
                         <p class="fs-6 isiLaporan" id="isiLaporan">{{ $report->isi_laporan }}</p>
                         <a  id="read-more" class="readMoreGakTuh text-decoration-none read-more mb-3 cursor">Lihat semua</aca>
-                        {{-- <a id="tutupReadMore" class="tutupReadMoreGakTuh text-decoration-none read-more d-none mb-3">Tutup</a> --}}
                         <a class="mt-5 foto-laporans">
                             <div class="foto-laporan">
-                                <img src="http://source.unsplash.com/200x200?report" alt="">
+                                <img src="{{ asset('storage/' . $report->foto) }}" alt="">
                             </div>
                         </a>
                         <div class="d-flex mt-3">

@@ -49,7 +49,7 @@
                 @if ($title == 'Laporan Saya')
                     <div class="d-flex align-items-center header-foto">
                         <div class="foto-profil rounded-circle bg-light ms-3 shadow">
-                            <img src="http://source.unsplash.com/200x200?person" alt="">
+                            <img src="img/profil.png" alt="">
                         </div>
                         <div class="mt-lg-3 header-nama">
                             <p class="fw-bold h3 text-light">{{ auth()->user()->nama }}</p>

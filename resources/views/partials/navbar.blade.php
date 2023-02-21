@@ -37,7 +37,7 @@
                     <li class="nav-item">
                         <a class="nav-link" href="#">
                             <div class="foto rounded-circle border">
-                                <img src="http://source.unsplash.com/50x50?person" alt="">
+                                <img src="img/profil.png" alt="">
                             </div>
                         </a>
                     </li>
