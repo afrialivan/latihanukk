@@ -18,6 +18,8 @@
 
 <body class="position-relative">
 
+    @include('partials.dashboard-nav')
+
 
     <div class="cotainer">
         @yield('dashboard')
