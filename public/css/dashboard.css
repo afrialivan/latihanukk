@@ -1,0 +1,16 @@
+.baris div:nth-child(1) {
+  width: 50px;
+}
+
+.baris div:nth-child(2) {
+  width: 150px;
+}
+.baris div:nth-child(3) {
+  width: 170px;
+}
+.baris div:nth-child(4) { 
+  width: 10000px;
+}
+.baris div:nth-child(5) { 
+  width: 100px;
+}

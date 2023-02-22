@@ -119,6 +119,9 @@ p {
   object-fit: cover;
 }
 
+.cursor {
+  cursor: pointer;
+}
 
 /* mobile */
 @media screen and (min-width: 576px) {}

@@ -58,7 +58,7 @@ class pengaduanController extends Controller
 
         Pengaduan::create($validasi);
 
-        return redirect('/laporansaya');
+        return redirect('/laporansaya/semua');
     }
 
     /**

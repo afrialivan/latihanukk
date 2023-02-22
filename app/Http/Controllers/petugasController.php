@@ -3,10 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\Pengaduan;
-use App\Models\User;
 use Illuminate\Http\Request;
 
-class userController extends Controller
+class petugasController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,34 +14,9 @@ class userController extends Controller
      */
     public function index()
     {
-        return view('laporanSaya', [
-            'title' => 'Laporan Saya',
-            'status' => 'semua',
-            'reports' => Pengaduan::where('id_user', auth()->user()->id)->latest()->get()
-        ]);
-    }
-    public function belum()
-    {
-        return view('laporanSaya', [
-            'title' => 'Laporan Saya',
-            'status' => '0',
-            'reports' => Pengaduan::where('id_user', auth()->user())->orWhere('status', '0')->latest()->get()
-        ]);
-    }
-    public function proses()
-    {
-        return view('laporanSaya', [
-            'title' => 'Laporan Saya',
-            'status' => 'proses',
-            'reports' => Pengaduan::where('id_user', auth()->user())->orWhere('status', 'proses')->latest()->get()
-        ]);
-    }
-    public function selesai()
-    {
-        return view('laporanSaya', [
-            'title' => 'Laporan Saya',
-            'status' => 'selesai',
-            'reports' => Pengaduan::where('id_user', auth()->user())->orWhere('status', 'selesai')->latest()->get()
+        return view('dashboard.laporan', [
+            'title' => 'Dashboard',
+            'reports' => Pengaduan::latest()->get()
         ]);
     }
 

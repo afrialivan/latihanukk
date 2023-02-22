@@ -12,45 +12,39 @@ document.addEventListener('scroll', function (ev) {
 })
 
 
+// <!DOCTYPE html>
+// <html>
+// <body>
 
+// <h1>JavaScript Strings</h1>
+// <h2>The split() Method</h2>
 
-// laporan
-// var text = document.getElementById('isiLaporan').innerHTML
-// var isitext = document.getElementById('isiLaporan')
-// var readMore = document.getElementById('read-more')
-// var tutupReadMore = document.getElementById('tutupReadMore')
+// <p>split() splits a string into an array of substrings, and returns the array.</p>
 
+// <p>The second word is:</p>
+// <p id="demo"></p>
 
-// if (text.length > 800) {
-//   paragraf = text.substring(0, 800) + " ........."
-// }
-// if(text.length < 800) {
-//   readMore.classList.add('d-none')
-// }
+// <script>
 
+// </script>
 
-// isitext.innerHTML = paragraf
-
-// readMore.onclick = () => {
-//   isitext.innerHTML = text
-//   tutupReadMore.classList.remove('d-none')
-//   readMore.classList.add('d-none')
-// }
-
-// tutupReadMore.onclick = () => {
-//   isitext.innerHTML = paragraf
-//   tutupReadMore.classList.add('d-none')
-//   readMore.classList.remove('d-none')
-// }
+// </body>
+// </html>
 
 
 document.querySelectorAll('.readMoreGakTuh').forEach(element => {
   const paragraf = element.previousElementSibling.innerHTML
+
+  var text = paragraf.split(' ')
+
+  text.splice(80)
+
+  element.previousElementSibling.innerHTML = text.join(' ')
+
   let toggle = true
 
-  element.previousElementSibling.innerHTML = paragraf.substring(0, 500)
-  
-  if(paragraf.length < 800) {
+  if(text.length <= 79) {
+    
     element.classList.add('d-none')
   }
 
@@ -59,7 +53,7 @@ document.querySelectorAll('.readMoreGakTuh').forEach(element => {
     
     if (toggle) {
       element.innerHTML = 'Lihat semua'
-      element.previousElementSibling.innerHTML = element.previousElementSibling.innerHTML.substring(0, 500)
+      element.previousElementSibling.innerHTML = text.join(' ')
     } else {
       element.innerHTML = 'Tutup'
       element.previousElementSibling.innerHTML = paragraf
