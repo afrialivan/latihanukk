@@ -1,6 +1,7 @@
 <nav class="navbar navbar-expand-lg position-sticky bg-light top-0 navbar-light">
     <div class="container">
-        <a class="navbar-brand" href="/"><img src="{{ ($title == 'Laporan Saya') ? '../' : '' }}img/logo.svg" alt=""></a>
+        <a class="navbar-brand" href="/"><img src="{{ $title == 'Laporan Saya' ? '../' : '' }}img/logo.svg"
+                alt=""></a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
             aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -8,14 +9,16 @@
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav align-items-center">
                 <li class="nav-item">
-                    <a class="nav-link text-blue active" ari                                                                                                                      a-current="page" href="/">Pengaduan</a>
+                    <a class="nav-link text-blue active" ari a-current="page" href="/">Pengaduan</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="/semualaporan">Laporan</a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="/dashboard/laporan">Dashboard</a>
-                </li>
+                @can('petugasAdmin')
+                    <li class="nav-item">
+                        <a class="nav-link" href="/dashboard/laporan">Dashboard</a>
+                    </li>
+                @endcan
                 <li class="nav-item">
                     <a class="nav-link notif" href="#"><i class="bi bi-bell-fill"></i></a>
                 </li>
@@ -39,7 +42,7 @@
                     <li class="nav-item">
                         <a class="nav-link" href="#">
                             <div class="foto rounded-circle border">
-                                <img src="{{ ($title == 'Laporan Saya') ? '../' : '' }}img/profil.png" alt="">
+                                <img src="{{ $title == 'Laporan Saya' ? '../' : '' }}img/profil.png" alt="">
                             </div>
                         </a>
                     </li>
