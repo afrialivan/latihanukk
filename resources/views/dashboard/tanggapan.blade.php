@@ -40,7 +40,7 @@
                 @foreach ($reports as $report)
                     <tr class="">
                         <td scope="row">{{ $loop->iteration }}</td>
-                        <td>{{ $report->user->nama }}</td>
+                        <td>{{ $report->user->nama                                             }}</td>
                         <td>{{ $report->tgl_pengaduan }}</td>
                         <td>
                             <p>{{ $report->isi_laporan }}</p>
@@ -53,12 +53,13 @@
                                 <button class="btn btn-outline-primary" data-bs-toggle="modal"
                                     data-bs-target="#belum{{ $loop->iteration }}" data-bs-whatever="@mdo">Proses</button>
                             @endif
-                            @if ($report->status == 'proses')
-                                <div class="d-grid">
-                                    <a href="/" class="btn btn-outline-primary mb-1">Tanggapi</a>
-                                    <button class="btn btn-outline-primary">Selesai</button>
-                                </div>
-                            @endif
+                            <div class="d-grid">
+                                <button class="btn btn-outline-primary mb-1" data-bs-toggle="modal"
+                                    data-bs-target="#proses{{ $loop->iteration }}"
+                                    data-bs-whatever="@mdo">Tanggapi</button>
+                                <button class="btn btn-outline-primary" data-bs-toggle="modal"
+                                    data-bs-target="#proses{{ $loop->iteration }}" data-bs-whatever="@mdo">Selesai</button>
+                            </div>
                         </td>
                     </tr>
 
@@ -76,6 +77,39 @@
                                     @csrf
                                     <div class="modal-body">
                                         <div class="mb-3">
+                                            <textarea class="form-control" id="message-text" name="isi_tanggapan"></textarea>
+                                        </div>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary"
+                                            data-bs-dismiss="modal">Close</button>
+                                        <button type="submit" class="btn btn-primary">Send message</button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+
+                    {{-- proses --}}
+                    <div class="modal fade" id="proses{{ $loop->iteration }}" tabindex="-1"
+                        aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="exampleModalLabel">Tanggapi</h5>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                        aria-label="Close"></button>
+                                </div>
+                                <form action="/dashboard/proses/{{ $report->id }}" method="POST">
+                                    @csrf
+                                    <div class="modal-body">
+                                      <div class="mb-3">
+                                          @foreach ($tanggapans as $tanggapan)
+                                              @if ($report->status == proses)
+                                                  <p>oo</p>
+                                                  <hr>
+                                              @endif
+                                          @endforeach
                                             <textarea class="form-control" id="message-text" name="isi_tanggapan"></textarea>
                                         </div>
                                     </div>

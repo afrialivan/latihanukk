@@ -7,7 +7,7 @@
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarNav">
-            <ul class="navbar-nav align-items-center">
+            <ul class="navbar-nav">
                 <li class="nav-item">
                     <a class="nav-link text-blue active" ari a-current="page" href="/">Pengaduan</a>
                 </li>
@@ -23,7 +23,7 @@
                     <a class="nav-link notif" href="#"><i class="bi bi-bell-fill"></i></a>
                 </li>
             </ul>
-            <ul class="navbar-nav ms-auto d-lg-flex align-items-center">
+            <ul class="navbar-nav ms-auto d-lg-flex">
                 @auth
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
@@ -46,7 +46,6 @@
                             </div>
                         </a>
                     </li>
-
                 @endauth
                 @guest
                     <a href="/login" class="btn btn-primary">Login</a>

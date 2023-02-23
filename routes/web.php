@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\dashboardController;
 use App\Http\Controllers\loginController;
 use App\Http\Controllers\pengaduanController;
 use App\Http\Controllers\petugasController;
@@ -33,4 +34,9 @@ Route::get('/laporansaya/belum', [userController::class, 'belum']);
 Route::get('/laporansaya/proses', [userController::class, 'proses']);
 Route::get('/laporansaya/selesai', [userController::class, 'selesai']);
 
-Route::get('/dashboard/laporan', [petugasController::class, 'index']);
+
+Route::get('/dashboard/laporan', [dashboardController::class, 'index']);
+Route::post('/dashboard/belum/{pengaduan}', [dashboardController::class, 'proses']);
+Route::get('/dashboard/belum', [dashboardController::class, 'belumView']);
+Route::get('/dashboard/proses', [dashboardController::class, 'prosesView']);
+Route::get('/dashboard/selesai', [dashboardController::class, 'selesaiView']);

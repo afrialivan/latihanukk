@@ -12,25 +12,6 @@ document.addEventListener('scroll', function (ev) {
 })
 
 
-// <!DOCTYPE html>
-// <html>
-// <body>
-
-// <h1>JavaScript Strings</h1>
-// <h2>The split() Method</h2>
-
-// <p>split() splits a string into an array of substrings, and returns the array.</p>
-
-// <p>The second word is:</p>
-// <p id="demo"></p>
-
-// <script>
-
-// </script>
-
-// </body>
-// </html>
-
 
 document.querySelectorAll('.readMoreGakTuh').forEach(element => {
   const paragraf = element.previousElementSibling.innerHTML
@@ -61,3 +42,6 @@ document.querySelectorAll('.readMoreGakTuh').forEach(element => {
   }
 
 });
+
+
+
