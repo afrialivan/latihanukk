@@ -5,6 +5,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="{{ ($title == 'Laporan Saya') ? '../' : '' }}css/style.css">
+    <link rel="stylesheet" href="{{ ($title == 'Laporan Saya') ? '../' : '' }}css/darkmode.css">
     <link rel="icon" href="{{ ($title == 'Laporan Saya') ? '../' : '' }}img/logo1.svg">
 
     <!-- Bootstrap CSS -->

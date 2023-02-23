@@ -20,6 +20,7 @@ class CreatePengaduansTable extends Migration
             $table->text('isi_laporan');
             $table->text('foto');
             $table->enum('status', ['0', 'proses', 'selesai'])->default('0');
+            $table->string('id_tanggapan')->default('1');
             $table->timestamps();
         });
     }

@@ -46,16 +46,15 @@
                             <p>{{ $report->isi_laporan }}</p>
                             <a class="readmore text-decoration-none" style="cursor: pointer">Lihat Semua</a>
                         </td>
-                        <td><img class="img-fluid" style="width: 150px; height: 150px; object-fit: cover"
+                        <td><img class="img-fluid img-thumbnail" style="width: 150px; height: 150px; object-fit: cover"
                                 src="{{ asset('storage/' . $report->foto) }}" alt=""></td>
                         <td>
                             @if ($report->status == 0)
-                                <button class="btn btn-outline-primary" data-bs-toggle="modal"
-                                    data-bs-target="#belum{{ $loop->iteration }}" data-bs-whatever="@mdo">Proses</button>
+                                <a href="/dashboard/tanggapan/{{ $report->id }}" class="btn btn-outline-primary">Proses</a>
                             @endif
                             @if ($report->status == 'proses')
                                 <div class="d-grid">
-                                    <a href="/" class="btn btn-outline-primary mb-1">Tanggapi</a>
+                                    <a href="/tanggapan" class="btn btn-outline-primary mb-1">Tanggapi</a>
                                     <button class="btn btn-outline-primary">Selesai</button>
                                 </div>
                             @endif

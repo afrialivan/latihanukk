@@ -16,6 +16,6 @@ class Pengaduan extends Model
     }
 
     public function tanggapan() {
-        return $this->hasMany(Tanggapan::class);
+        return $this->hasMany(Tanggapan::class, 'id_tanggapan');
     }
 }

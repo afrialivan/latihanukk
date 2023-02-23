@@ -34,7 +34,7 @@
 
 
     <!-- Custom styles for this template -->
-    <link href="../css/dashboard.css" rel="stylesheet">
+    <link href="{{ ($title == 'tanggapan') ? '../' : '' }}../css/dashboard.css" rel="stylesheet">
 </head>
 
 <body>
@@ -51,34 +51,8 @@
 
     <div class="container-fluid">
         <div class="row">
-            <nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block bg-light sidebar collapse">
-                <div class="position-sticky pt-3">
-                    <ul class="nav flex-column">
-                        <li class="nav-item">
-                            <a class="nav-link active" aria-current="page" href="#">
-                                <i class="bi bi-file-text-fill"></i>
-                                Laporan
-                            </a>
-                        </li>
-                    </ul>
-
-                    @can('admin')
-                        <ul class="nav flex-column mb-2">
-                            <li class="nav-item">
-                                <a class="nav-link" href="#">
-                                    <i class="bi bi-person-fill"></i>
-                                    User
-                                </a>
-                            </li>
-                        </ul>
-                    @endcan
-                    <ul class="nav flex-column mb-2">
-                        <li class="nav-item">
-                                <a href="/logout" class="nav-link text-dark text-left d-lg-none d-block d-md-none d-sm-block ">Logout</a>
-                        </li>
-                    </ul>
-                </div>
-            </nav>
+            
+            @include('partials.dashboard-nav')
 
             <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
 
@@ -101,7 +75,7 @@
     <script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.4/dist/Chart.min.js"
         integrity="sha384-zNy6FEbO50N+Cg5wap8IKA4M/ZnLJgzc6w2NqACZaK0u0FXfOWRRJOnQtpZun8ha" crossorigin="anonymous">
     </script>
-    <script src="../js/dashboard.js"></script>
+    <script src="{{ ($title == 'tanggapan') ? '../' : '' }}../js/dashboard.js"></script>
 </body>
 
 </html>

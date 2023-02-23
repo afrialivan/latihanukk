@@ -40,3 +40,5 @@ Route::post('/dashboard/belum/{pengaduan}', [dashboardController::class, 'proses
 Route::get('/dashboard/belum', [dashboardController::class, 'belumView']);
 Route::get('/dashboard/proses', [dashboardController::class, 'prosesView']);
 Route::get('/dashboard/selesai', [dashboardController::class, 'selesaiView']);
+Route::get('/dashboard/tanggapan/{pengaduan}', [dashboardController::class, 'show']);
+Route::post('/dashboard/tanggapan/{pengaduan}', [dashboardController::class, 'tanggapan']);

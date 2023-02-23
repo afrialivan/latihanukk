@@ -17,7 +17,7 @@ class dashboardController extends Controller
     public function index(Pengaduan $pengaduan)
     {
         return view('dashboard.laporan', [
-            'title' => 'Dashboard',
+            'title' => 'dashboard',
             'status' => 'semua',
             'reports' => Pengaduan::latest()->get(),
             'tanggapans' => Tanggapan::where('id_pengaduan', '2' )->latest()->get()
@@ -26,21 +26,21 @@ class dashboardController extends Controller
 
     public function belumView(){
         return view('dashboard.laporan', [
-            'title' => 'Dashboard',
+            'title' => 'dashboard',
             'status' => '0',
             'reports' => Pengaduan::where('status', '0')->latest()->get()
         ]);
     }
     public function prosesView(){
         return view('dashboard.laporan', [
-            'title' => 'Dashboard',
+            'title' => 'dashboard',
             'status' => 'proses',
             'reports' => Pengaduan::where('status', 'proses')->latest()->get()
         ]);
     }
     public function selesaiView(){
         return view('dashboard.laporan', [
-            'title' => 'Dashboard',
+            'title' => 'dashboard',
             'status' => 'selesai',
             'reports' => Pengaduan::where('status', 'selesai')->latest()->get()
         ]);
@@ -100,7 +100,11 @@ class dashboardController extends Controller
      */
     public function show(Pengaduan $pengaduan)
     {
-        //
+        return view('dashboard.tanggapan', [
+            'title' => 'tanggapan',
+            'pengaduan' => $pengaduan,
+            'tanggapans' => Tanggapan::all()
+        ]);
     }
 
     /**
@@ -109,9 +113,22 @@ class dashboardController extends Controller
      * @param  \App\Models\Pengaduan  $pengaduan
      * @return \Illuminate\Http\Response
      */
-    public function edit(Pengaduan $pengaduan)
+    public function tanggapan(Request $request, Tanggapan $tanggapan, Pengaduan $pengaduan)
     {
-        //
+        $validasi = $request->validate([
+            'isi_tanggapan' => 'required'
+        ],[
+            'isi_tanggapan.required' => 'Tanggapan harus diisi'
+        ]);
+
+        $validasi['id_pengaduan'] = $pengaduan->id;
+        $validasi['tgl_tanggapan'] = date('d-m-Y');
+        $validasi['id_petugas'] = auth()->user()->id;
+
+        Tanggapan::create($validasi);
+
+        return back();
+
     }
 
     /**

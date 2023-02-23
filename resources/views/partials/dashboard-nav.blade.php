@@ -1,15 +1,28 @@
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
-  <div class="container">
-    <a class="navbar-brand" href="#">Navbar</a>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarNav">
-      <ul class="navbar-nav">
-        <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="#">Laporan</a>
-        </li>
+<nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block bg-light sidebar collapse">
+  <div class="position-sticky pt-3">
+      <ul class="nav flex-column">
+          <li class="nav-item">
+              <a class="nav-link active" aria-current="page" href="/dashboard/laporan">
+                  <i class="bi bi-file-text-fill"></i>
+                  Laporan
+              </a>
+          </li>
       </ul>
-    </div>
+
+      @can('admin')
+          <ul class="nav flex-column mb-2">
+              <li class="nav-item">
+                  <a class="nav-link" href="#">
+                      <i class="bi bi-person-fill"></i>
+                      User
+                  </a>
+              </li>
+          </ul>
+      @endcan
+      <ul class="nav flex-column mb-2">
+          <li class="nav-item">
+                  <a href="/logout" class="nav-link text-dark text-left d-lg-none d-block d-md-none d-sm-block ">Logout</a>
+          </li>
+      </ul>
   </div>
 </nav>
