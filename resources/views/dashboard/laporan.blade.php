@@ -37,56 +37,33 @@
                 </tr>
             </thead>
             <tbody>
-                @foreach ($reports as $report)
+                @foreach ($reports as $pengaduan)
                     <tr class="">
                         <td scope="row">{{ $loop->iteration }}</td>
-                        <td>{{ $report->user->nama }}</td>
-                        <td>{{ $report->tgl_pengaduan }}</td>
+                        <td>{{ $pengaduan->user->nama }}</td>
+                        <td>{{ $pengaduan->tgl_pengaduan }}</td>
                         <td>
-                            <p>{{ $report->isi_laporan }}</p>
+                            <p>{{ $pengaduan->isi_laporan }}</p>
                             <a class="readmore text-decoration-none" style="cursor: pointer">Lihat Semua</a>
                         </td>
                         <td><img class="img-fluid img-thumbnail" style="width: 150px; height: 150px; object-fit: cover"
-                                src="{{ asset('storage/' . $report->foto) }}" alt=""></td>
+                                src="{{ asset('storage/' . $pengaduan->foto) }}" alt=""></td>
                         <td>
-                            @if ($report->status == 0)
-                                <a href="/dashboard/tanggapan/{{ $report->id }}" class="btn btn-outline-primary">Proses</a>
+                            @if ($pengaduan->status == 0)
+                                <a href="/dashboard/proses/{{ $pengaduan->id }}" class="btn btn-outline-primary">Proses</a>
                             @endif
-                            @if ($report->status == 'proses')
-                                <div class="d-grid">
-                                    <a href="/tanggapan" class="btn btn-outline-primary mb-1">Tanggapi</a>
-                                    <button class="btn btn-outline-primary">Selesai</button>
-                                </div>
+                            @if ($pengaduan->status == 'proses')
+                            <div class="d-grid">
+                                <a href="/dashboard/tanggapan/{{ $pengaduan->id }}" class="btn btn-outline-primary mb-1">Tanggapi</a>
+                                <a href="/dashboard/selesai/{{ $pengaduan->id }}" class="btn btn-outline-primary">Selesai</a>
+                            </div>
+                            @endif
+                            @if ($pengaduan->status == 'selesai')
+                                <a href="/dashboard/batalselesai/{{ $pengaduan->id }}" class="btn btn-outline-primary">Batal Selesai</a>
                             @endif
                         </td>
                     </tr>
 
-                    {{-- belum --}}
-                    <div class="modal fade" id="belum{{ $loop->iteration }}" tabindex="-1"
-                        aria-labelledby="exampleModalLabel" aria-hidden="true">
-                        <div class="modal-dialog">
-                            <div class="modal-content">
-                                <div class="modal-header">
-                                    <h5 class="modal-title" id="exampleModalLabel">Tanggapi</h5>
-                                    <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                        aria-label="Close"></button>
-                                </div>
-                                <form action="/dashboard/belum/{{ $report->id }}" method="POST">
-                                    @csrf
-                                    <div class="modal-body">
-                                        <div class="mb-3">
-                                            <textarea class="form-control" id="message-text" name="isi_tanggapan"></textarea>
-                                        </div>
-                                    </div>
-                                    <div class="modal-footer">
-                                        <button type="button" class="btn btn-secondary"
-                                            data-bs-dismiss="modal">Close</button>
-                                        <button type="submit" class="btn btn-primary">Send message</button>
-                                    </div>
-                                </form>
-                            </div>
-                        </div>
-                    </div>
                 @endforeach
             </tbody>
         </table>

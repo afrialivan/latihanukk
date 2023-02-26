@@ -1,6 +1,6 @@
 <nav class="navbar navbar-expand-lg position-sticky bg-light top-0 navbar-light">
     <div class="container">
-        <a class="navbar-brand" href="/"><img src="{{ $title == 'Laporan Saya' ? '../' : '' }}img/logo.svg"
+        <a class="navbar-brand" href="/"><img src="{{ ($title == 'Laporan Saya' || $title == 'Tanggapan') ? '../' : '' }}img/logo.svg"
                 alt=""></a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
             aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -60,7 +60,7 @@
                     <li class="nav-item">
                         <a class="nav-link" href="#">
                             <div class="foto rounded-circle border">
-                                <img src="{{ $title == 'Laporan Saya' ? '../' : '' }}img/profil.png" alt="">
+                                <img src="{{ ($title == 'Laporan Saya' || $title == 'Tanggapan') ? '../' : '' }}img/profil.png" alt="">
                             </div>
                         </a>
                     </li>

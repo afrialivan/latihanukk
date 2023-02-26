@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Pengaduan;
 use App\Models\Tanggapan;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class dashboardController extends Controller
@@ -20,25 +21,28 @@ class dashboardController extends Controller
             'title' => 'dashboard',
             'status' => 'semua',
             'reports' => Pengaduan::latest()->get(),
-            'tanggapans' => Tanggapan::where('id_pengaduan', '2' )->latest()->get()
+            'tanggapans' => Tanggapan::where('id_pengaduan', '2')->latest()->get()
         ]);
     }
 
-    public function belumView(){
+    public function belumView()
+    {
         return view('dashboard.laporan', [
             'title' => 'dashboard',
             'status' => '0',
             'reports' => Pengaduan::where('status', '0')->latest()->get()
         ]);
     }
-    public function prosesView(){
+    public function prosesView()
+    {
         return view('dashboard.laporan', [
             'title' => 'dashboard',
             'status' => 'proses',
             'reports' => Pengaduan::where('status', 'proses')->latest()->get()
         ]);
     }
-    public function selesaiView(){
+    public function selesaiView()
+    {
         return view('dashboard.laporan', [
             'title' => 'dashboard',
             'status' => 'selesai',
@@ -52,33 +56,22 @@ class dashboardController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function proses(Request $request, Pengaduan $pengaduan)
+    public function tanggapan(Request $request, Pengaduan $pengaduan)
     {
         $validasi = $request->validate([
             'isi_tanggapan' => 'required'
         ]);
-        
+
         $validasi['id_petugas'] = auth()->user()->id;
-        $validasi['id_pengaduan'] = $pengaduan->id;   
+        $validasi['id_pengaduan'] = $pengaduan->id;
         $validasi['tgl_tanggapan'] = date('Y-m-d');
 
         $validasi['status'] = 'proses';
 
 
-        Pengaduan::where('id', $pengaduan->id)->update([
-            'id_user' => $pengaduan->id_user,
-            'isi_laporan' => $pengaduan->isi_laporan,
-            'foto' => $pengaduan->foto,
-            'status' => 'proses',
-
-        ]);
-
-
         Tanggapan::create($validasi);
 
-        return redirect('/dashboard/laporan')->with('proses');
-
-
+        return back();
     }
 
     /**
@@ -103,7 +96,7 @@ class dashboardController extends Controller
         return view('dashboard.tanggapan', [
             'title' => 'tanggapan',
             'pengaduan' => $pengaduan,
-            'tanggapans' => Tanggapan::all()
+            'tanggapans' => Tanggapan::where('id_pengaduan', $pengaduan->id)->get()
         ]);
     }
 
@@ -113,23 +106,56 @@ class dashboardController extends Controller
      * @param  \App\Models\Pengaduan  $pengaduan
      * @return \Illuminate\Http\Response
      */
-    public function tanggapan(Request $request, Tanggapan $tanggapan, Pengaduan $pengaduan)
+    public function proses(Request $request, Pengaduan $pengaduan)
     {
-        $validasi = $request->validate([
-            'isi_tanggapan' => 'required'
-        ],[
-            'isi_tanggapan.required' => 'Tanggapan harus diisi'
+        Pengaduan::where('id', $pengaduan->id)->update([
+            'id_user' => $pengaduan->id_user,
+            'isi_laporan' => $pengaduan->isi_laporan,
+            'foto' => $pengaduan->foto,
+            'status' => 'proses',
+
         ]);
 
-        $validasi['id_pengaduan'] = $pengaduan->id;
-        $validasi['tgl_tanggapan'] = date('d-m-Y');
-        $validasi['id_petugas'] = auth()->user()->id;
-
-        Tanggapan::create($validasi);
-
-        return back();
-
+        return view('dashboard.tanggapan', [
+            'title' => 'tanggapan',
+            'pengaduan' => $pengaduan,
+            'tanggapans' => Tanggapan::where('id_pengaduan', $pengaduan->id)->get()
+        ]);
     }
+    public function selesai(Request $request, Pengaduan $pengaduan)
+    {
+        Pengaduan::where('id', $pengaduan->id)->update([
+            'id_user' => $pengaduan->id_user,
+            'isi_laporan' => $pengaduan->isi_laporan,
+            'foto' => $pengaduan->foto,
+            'status' => 'selesai',
+
+        ]);
+
+        return redirect('/dashboard/laporan');
+    }
+    
+    public function batal(Request $request, Pengaduan $pengaduan)
+    {
+        Pengaduan::where('id', $pengaduan->id)->update([
+            'id_user' => $pengaduan->id_user,
+            'isi_laporan' => $pengaduan->isi_laporan,
+            'foto' => $pengaduan->foto,
+            'status' => 'proses',
+
+        ]);
+
+        return redirect('/dashboard/laporan');
+    }
+
+    public function users() {
+        return view('dashboard.ubahUser', [
+            'title' => 'Users',
+            'users' => User::latest()->get()
+        ]);
+    }
+
+
 
     /**
      * Update the specified resource in storage.
@@ -138,9 +164,22 @@ class dashboardController extends Controller
      * @param  \App\Models\Pengaduan  $pengaduan
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Pengaduan $pengaduan)
+    public function update(Request $request, User $user)
     {
-        //
+        
+        $validasi = $request->validate([
+            'level' => 'required'
+        ]);
+
+        $validasi['nik'] = $user->nik;
+        $validasi['nama'] = $user->nama;
+        $validasi['username'] = $user->username;
+        $validasi['password'] = $user->password;
+        $validasi['tlp'] = $user->tlp;
+
+        User::where('id', $user->id)->update($validasi);
+
+        return redirect('dashboard/users');
     }
 
     /**

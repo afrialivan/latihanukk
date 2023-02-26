@@ -4,9 +4,9 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="{{ ($title == 'Laporan Saya') ? '../' : '' }}css/style.css">
-    <link rel="stylesheet" href="{{ ($title == 'Laporan Saya') ? '../' : '' }}css/darkmode.css">
-    <link rel="icon" href="{{ ($title == 'Laporan Saya') ? '../' : '' }}img/logo1.svg">
+    <link rel="stylesheet" href="{{ $title == 'Laporan Saya' || $title == 'Tanggapan' ? '../' : '' }}css/style.css">
+    <link rel="stylesheet" href="{{ $title == 'Laporan Saya' || $title == 'Tanggapan' ? '../' : '' }}css/darkmode.css">
+    <link rel="icon" href="{{ $title == 'Laporan Saya' || $title == 'Tanggapan' ? '../' : '' }}img/logo1.svg">
 
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
@@ -21,12 +21,11 @@
 </head>
 
 <body class="position-relative">
-
     @if ($title !== 'login' && $title !== 'register')
         @include('partials.navbar')
     @endif
 
-    @if ($title !== 'Laporan Saya' && $title !== 'Laporan')
+    @if ($title !== 'Laporan Saya' && $title !== 'Laporan' && $title !== 'Tanggapan')
         <div class="hero-img position-absolute">
             <img class="" src="img/bg.svg" alt="">
         </div>
@@ -71,10 +70,12 @@
         @yield('container')
     </div>
 
-    <script src="{{ ($title == 'Laporan Saya') ? '../' : '' }}js/main.js"></script>
+    <script src="{{ $title == 'Laporan Saya' || $title == 'Tanggapan' ? '../' : '' }}js/main.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous">
     </script>
+    <script src="https://kit.fontawesome.com/c404e6b6cb.js" crossorigin="anonymous"></script>
+    <script src="https://cdn.lordicon.com/ritcuqlt.js"></script>
 </body>
 
 </html>

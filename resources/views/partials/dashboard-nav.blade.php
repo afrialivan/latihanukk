@@ -12,7 +12,7 @@
       @can('admin')
           <ul class="nav flex-column mb-2">
               <li class="nav-item">
-                  <a class="nav-link" href="#">
+                  <a class="nav-link" href="/dashboard/users">
                       <i class="bi bi-person-fill"></i>
                       User
                   </a>

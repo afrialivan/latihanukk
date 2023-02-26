@@ -27,18 +27,23 @@ Route::get('/register', [registerController::class, 'index']);
 Route::post('/register', [registerController::class, 'store']);
 
 
-Route::post('/pengaduan', [pengaduanController::class, 'store']);
-Route::get('/semualaporan', [pengaduanController::class, 'all']);
-Route::get('/laporansaya/semua', [userController::class, 'index']);
-Route::get('/laporansaya/belum', [userController::class, 'belum']);
-Route::get('/laporansaya/proses', [userController::class, 'proses']);
-Route::get('/laporansaya/selesai', [userController::class, 'selesai']);
+Route::post('/pengaduan', [pengaduanController::class, 'store'])->middleware('auth');
+Route::get('/tanggapan/{pengaduan}', [pengaduanController::class, 'show'])->middleware('auth');
+Route::get('/semualaporan', [pengaduanController::class, 'all'])->middleware('auth');
+Route::get('/laporansaya/semua', [userController::class, 'index'])->middleware('auth');
+Route::get('/laporansaya/belum', [userController::class, 'belum'])->middleware('auth');
+Route::get('/laporansaya/proses', [userController::class, 'proses'])->middleware('auth');
+Route::get('/laporansaya/selesai', [userController::class, 'selesai'])->middleware('auth');
 
 
 Route::get('/dashboard/laporan', [dashboardController::class, 'index']);
-Route::post('/dashboard/belum/{pengaduan}', [dashboardController::class, 'proses']);
+Route::get('/dashboard/tanggapan/{pengaduan}', [dashboardController::class, 'show']);
+Route::post('/dashboard/tanggapan/{pengaduan}', [dashboardController::class, 'tanggapan']);
+Route::get('/dashboard/proses/{pengaduan}', [dashboardController::class, 'proses']);
+Route::get('/dashboard/selesai/{pengaduan}', [dashboardController::class, 'selesai']);
+Route::get('/dashboard/batalproses/{pengaduan}', [dashboardController::class, 'batal']);
 Route::get('/dashboard/belum', [dashboardController::class, 'belumView']);
 Route::get('/dashboard/proses', [dashboardController::class, 'prosesView']);
 Route::get('/dashboard/selesai', [dashboardController::class, 'selesaiView']);
-Route::get('/dashboard/tanggapan/{pengaduan}', [dashboardController::class, 'show']);
-Route::post('/dashboard/tanggapan/{pengaduan}', [dashboardController::class, 'tanggapan']);
+Route::get('/dashboard/users', [dashboardController::class, 'users']);
+Route::post('/dashboard/ubahlevel/{user}', [dashboardController::class, 'update']);

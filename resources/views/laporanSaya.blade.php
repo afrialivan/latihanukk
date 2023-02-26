@@ -33,6 +33,8 @@
                             <img src="../img/profil.png" alt="" class="rounded-circle d-none d-lg-block">
                         </div>
                         <div class="col-12 col-lg-11 col-md-12 col-sm-12">
+                            <p class="float-end text-secondary fs-5">Status:
+                                {{ $report->status == '0' ? 'Belum diproses' : $report->status }}</p>
                             <p class="h4 text-primary">{{ $report->user->nama }}</p>
                             <p class="fs-6">{{ $report->tgl_pengaduan }}</p>
                             <p class="fs-6 isiLaporan" id="isiLaporan">{{ $report->isi_laporan }}</p>
@@ -43,7 +45,8 @@
                                     </div>
                                 </a>
                                 <div class="d-flex mt-3">
-                                    <a class="tanggapan text-decoration-none text-dark" href="">
+                                    <a class="tanggapan text-decoration-none text-dark"
+                                        href="/tanggapan/{{ $report->id }}">
                                         <i class="bi bi-chat-right-text me-2"></i> Tanggapan
                                     </a>
                                 </div>

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Pengaduan;
+use App\Models\Tanggapan;
 use Illuminate\Http\Request;
 
 class pengaduanController extends Controller
@@ -28,7 +29,7 @@ class pengaduanController extends Controller
     {
         return view('reports', [
             'title' => 'Laporan',
-            'reports' => Pengaduan::latest()->get()
+            'reports' => Pengaduan::latest()->get(),
         ]);
     }
 
@@ -69,7 +70,11 @@ class pengaduanController extends Controller
      */
     public function show(Pengaduan $pengaduan)
     {
-        //
+        return view('tanggapan', [
+            'title' => 'Tanggapan',
+            'pengaduan' => $pengaduan,
+            'tanggapans' => Tanggapan::where('id_pengaduan', $pengaduan->id)->get()
+        ]);
     }
 
     /**

@@ -28,6 +28,9 @@ class loginController extends Controller
 
         if(Auth::attempt($login)) {
             $request->session()->regenerate();
+            if (auth()->user()->level == 'admin' || auth()->user()->level == 'petugas') {
+                return redirect()->intended('/dashboard/laporan');
+            }
             return redirect()->intended('/');
         }
 
