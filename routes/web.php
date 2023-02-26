@@ -41,9 +41,10 @@ Route::get('/dashboard/tanggapan/{pengaduan}', [dashboardController::class, 'sho
 Route::post('/dashboard/tanggapan/{pengaduan}', [dashboardController::class, 'tanggapan'])->middleware('petugas');
 Route::get('/dashboard/proses/{pengaduan}', [dashboardController::class, 'proses'])->middleware('petugas');
 Route::get('/dashboard/selesai/{pengaduan}', [dashboardController::class, 'selesai'])->middleware('petugas');
-Route::get('/dashboard/batalproses/{pengaduan}', [dashboardController::class, 'batal'])->middleware('petugas');
+Route::get('/dashboard/batalselesai/{pengaduan}', [dashboardController::class, 'batal'])->middleware('petugas');
 Route::get('/dashboard/belum', [dashboardController::class, 'belumView'])->middleware('petugas');
 Route::get('/dashboard/proses', [dashboardController::class, 'prosesView'])->middleware('petugas');
 Route::get('/dashboard/selesai', [dashboardController::class, 'selesaiView'])->middleware('petugas');
 Route::get('/dashboard/users', [dashboardController::class, 'users'])->middleware('admin');
 Route::post('/dashboard/ubahlevel/{user}', [dashboardController::class, 'update'])->middleware('admin');
+Route::get('/dashboard/cetak', [dashboardController::class, 'export'])->middleware('admin');

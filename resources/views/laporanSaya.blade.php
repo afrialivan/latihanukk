@@ -60,4 +60,8 @@
             <p class="fs-5 mt-5  text-center">Data tidak tersedia</p>
         @endif
     </div>
+
+    <div class="d-flex justify-content-center">
+        {{ $reports->links() }}
+    </div>
 @endsection

@@ -34,7 +34,7 @@
 
 
     <!-- Custom styles for this template -->
-    <link href="{{ ($title == 'tanggapan') ? '../' : '' }}../css/dashboard.css" rel="stylesheet">
+    <link href="{{ $title == 'tanggapan' ? '../' : '' }}../css/dashboard.css" rel="stylesheet">
 </head>
 
 <body>
@@ -51,7 +51,7 @@
 
     <div class="container-fluid">
         <div class="row">
-            
+
             @include('partials.dashboard-nav')
 
             <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
@@ -75,7 +75,8 @@
     <script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.4/dist/Chart.min.js"
         integrity="sha384-zNy6FEbO50N+Cg5wap8IKA4M/ZnLJgzc6w2NqACZaK0u0FXfOWRRJOnQtpZun8ha" crossorigin="anonymous">
     </script>
-    <script src="{{ ($title == 'tanggapan') ? '../' : '' }}../js/dashboard.js"></script>
+    <script src="https://kit.fontawesome.com/c404e6b6cb.js" crossorigin="anonymous"></script>
+    <script src="{{ $title == 'tanggapan' ? '../' : '' }}../js/dashboard.js"></script>
 </body>
 
 </html>

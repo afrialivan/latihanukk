@@ -18,7 +18,7 @@ class userController extends Controller
         return view('laporanSaya', [
             'title' => 'Laporan Saya',
             'status' => 'semua',
-            'reports' => Pengaduan::where('id_user', auth()->user()->id)->latest()->with('user')->get()
+            'reports' => Pengaduan::where('id_user', auth()->user()->id)->latest()->with('user')->paginate(10)
         ]);
     }
     public function belum()
@@ -26,7 +26,7 @@ class userController extends Controller
         return view('laporanSaya', [
             'title' => 'Laporan Saya',
             'status' => '0',
-            'reports' => Pengaduan::where('id_user', auth()->user())->orWhere('status', '0')->latest()->get()
+            'reports' => Pengaduan::where('id_user', auth()->user())->orWhere('status', '0')->latest()->paginate(10)
         ]);
     }
     public function proses()
@@ -34,7 +34,7 @@ class userController extends Controller
         return view('laporanSaya', [
             'title' => 'Laporan Saya',
             'status' => 'proses',
-            'reports' => Pengaduan::where('id_user', auth()->user())->orWhere('status', 'proses')->latest()->get()
+            'reports' => Pengaduan::where('id_user', auth()->user())->orWhere('status', 'proses')->latest()->paginate(10)
         ]);
     }
     public function selesai()
@@ -42,7 +42,7 @@ class userController extends Controller
         return view('laporanSaya', [
             'title' => 'Laporan Saya',
             'status' => 'selesai',
-            'reports' => Pengaduan::where('id_user', auth()->user())->orWhere('status', 'selesai')->latest()->get()
+            'reports' => Pengaduan::where('id_user', auth()->user())->orWhere('status', 'selesai')->latest()->paginate(10)
         ]);
     }
 

@@ -68,4 +68,8 @@
             </tbody>
         </table>
     </div>
+
+    <div class="d-flex justify-content-center">
+        {{ $reports->links() }}
+    </div>
 @endsection

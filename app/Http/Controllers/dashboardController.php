@@ -7,6 +7,8 @@ use App\Models\Pengaduan;
 use App\Models\Tanggapan;
 use App\Models\User;
 use Illuminate\Http\Request;
+use App\Exports\UsersExport;
+use Maatwebsite\Excel\Facades\Excel;
 
 class dashboardController extends Controller
 {
@@ -20,8 +22,8 @@ class dashboardController extends Controller
         return view('dashboard.laporan', [
             'title' => 'dashboard',
             'status' => 'semua',
-            'reports' => Pengaduan::latest()->get(),
-            'tanggapans' => Tanggapan::where('id_pengaduan', '2')->latest()->with('user')->get()
+            'reports' => Pengaduan::latest()->with('user')->paginate(10),
+            'tanggapans' => Tanggapan::where('id_pengaduan', '2')->with('user')->latest()->get()
         ]);
     }
 
@@ -30,7 +32,7 @@ class dashboardController extends Controller
         return view('dashboard.laporan', [
             'title' => 'dashboard',
             'status' => '0',
-            'reports' => Pengaduan::where('status', '0')->latest()->with('user')->get()
+            'reports' => Pengaduan::where('status', '0')->latest()->with('user')->paginate(10),
         ]);
     }
     public function prosesView()
@@ -38,7 +40,7 @@ class dashboardController extends Controller
         return view('dashboard.laporan', [
             'title' => 'dashboard',
             'status' => 'proses',
-            'reports' => Pengaduan::where('status', 'proses')->latest()->with('user')->get()
+            'reports' => Pengaduan::where('status', 'proses')->latest()->with('user')->paginate(10),
         ]);
     }
     public function selesaiView()
@@ -46,7 +48,7 @@ class dashboardController extends Controller
         return view('dashboard.laporan', [
             'title' => 'dashboard',
             'status' => 'selesai',
-            'reports' => Pengaduan::where('status', 'selesai')->latest()->with('user')->get()
+            'reports' => Pengaduan::where('status', 'selesai')->latest()->with('user')->paginate(10),
         ]);
     }
 
@@ -151,7 +153,7 @@ class dashboardController extends Controller
     public function users() {
         return view('dashboard.ubahUser', [
             'title' => 'Users',
-            'users' => User::latest()->with('user')->get()
+            'users' => User::latest()->paginate(10),
         ]);
     }
 
@@ -180,6 +182,10 @@ class dashboardController extends Controller
         User::where('id', $user->id)->update($validasi);
 
         return redirect('dashboard/users');
+    }
+
+    public function export() {
+        return Excel::download(new UsersExport, 'users.xlsx');
     }
 
     /**
