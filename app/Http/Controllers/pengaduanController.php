@@ -27,9 +27,10 @@ class pengaduanController extends Controller
      */
     public function all()
     {
+
         return view('reports', [
             'title' => 'Laporan',
-            'reports' => Pengaduan::latest()->get(),
+            'pengaduans' => Pengaduan::latest()->with('user')->filter(request(['search']))->paginate(5),
         ]);
     }
 
@@ -43,10 +44,12 @@ class pengaduanController extends Controller
     {
         $validasi = $request->validate(
             [
+                'judul_pengaduan' => 'required',
                 'tgl_pengaduan' => 'required',
                 'isi_laporan' => 'required',
             ],
             [
+                'judul_pengaduan.required' => 'Judul pengaduan harus diisi',
                 'tgl_pengaduan.required' => 'Tanggal pengaduan harus diisi',
                 'isi_laporan.required' => 'Isi laporan pengaduan harus diisi',
             ]

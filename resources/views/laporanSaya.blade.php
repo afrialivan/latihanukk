@@ -35,8 +35,9 @@
                         <div class="col-12 col-lg-11 col-md-12 col-sm-12">
                             <p class="float-end text-secondary fs-5">Status:
                                 {{ $report->status == '0' ? 'Belum diproses' : $report->status }}</p>
-                            <p class="h4 text-primary">{{ $report->user->nama }}</p>
-                            <p class="fs-6">{{ $report->tgl_pengaduan }}</p>
+                                <p class="h4 text-primary mb-0">{{ $report->user->nama }}</p>
+                                <p class="fs-6 mt-0">{{ $report->tgl_pengaduan }}</p>
+                                <p class="h3 text-dark fw-bold mb-0">{{ $report->judul_pengaduan }}</p>
                             <p class="fs-6 isiLaporan" id="isiLaporan">{{ $report->isi_laporan }}</p>
                             <a id="read-more" class="readMoreGakTuh text-decoration-none read-more mb-3 cursor">Lihat semua
                                 <a cass="mt-5 foto-laporans">

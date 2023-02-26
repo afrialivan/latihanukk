@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\Pengaduan;
 use App\Models\User;
 use Illuminate\Database\Seeder;
 
@@ -15,6 +16,7 @@ class DatabaseSeeder extends Seeder
     public function run()
     {
         // \App\Models\User::factory(10)->create();
+        Pengaduan::factory(20)->create();
 
         User::create([
             'nama' => 'A. Muh. Afrial Ivan Pratama',

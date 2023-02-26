@@ -18,7 +18,7 @@ class userController extends Controller
         return view('laporanSaya', [
             'title' => 'Laporan Saya',
             'status' => 'semua',
-            'reports' => Pengaduan::where('id_user', auth()->user()->id)->latest()->get()
+            'reports' => Pengaduan::where('id_user', auth()->user()->id)->latest()->with('user')->get()
         ]);
     }
     public function belum()

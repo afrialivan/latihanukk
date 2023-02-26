@@ -18,4 +18,15 @@ class Pengaduan extends Model
     public function tanggapan() {
         return $this->hasMany(Tanggapan::class, 'id_tanggapan');
     }
+
+    public function scopeFilter($query, array $filters) {
+        $query->when(
+            $filters['search'] ?? false,
+            function ($query, $search) {
+                $query->where('judul_pengaduan', 'like', '%' . $search . '%')
+                ->orWhere('isi_laporan', 'like', '%' . $search . '%');
+            }
+        );
+    }
+
 }

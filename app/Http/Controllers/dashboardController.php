@@ -21,7 +21,7 @@ class dashboardController extends Controller
             'title' => 'dashboard',
             'status' => 'semua',
             'reports' => Pengaduan::latest()->get(),
-            'tanggapans' => Tanggapan::where('id_pengaduan', '2')->latest()->get()
+            'tanggapans' => Tanggapan::where('id_pengaduan', '2')->latest()->with('user')->get()
         ]);
     }
 
@@ -30,7 +30,7 @@ class dashboardController extends Controller
         return view('dashboard.laporan', [
             'title' => 'dashboard',
             'status' => '0',
-            'reports' => Pengaduan::where('status', '0')->latest()->get()
+            'reports' => Pengaduan::where('status', '0')->latest()->with('user')->get()
         ]);
     }
     public function prosesView()
@@ -38,7 +38,7 @@ class dashboardController extends Controller
         return view('dashboard.laporan', [
             'title' => 'dashboard',
             'status' => 'proses',
-            'reports' => Pengaduan::where('status', 'proses')->latest()->get()
+            'reports' => Pengaduan::where('status', 'proses')->latest()->with('user')->get()
         ]);
     }
     public function selesaiView()
@@ -46,7 +46,7 @@ class dashboardController extends Controller
         return view('dashboard.laporan', [
             'title' => 'dashboard',
             'status' => 'selesai',
-            'reports' => Pengaduan::where('status', 'selesai')->latest()->get()
+            'reports' => Pengaduan::where('status', 'selesai')->latest()->with('user')->get()
         ]);
     }
 
@@ -96,7 +96,7 @@ class dashboardController extends Controller
         return view('dashboard.tanggapan', [
             'title' => 'tanggapan',
             'pengaduan' => $pengaduan,
-            'tanggapans' => Tanggapan::where('id_pengaduan', $pengaduan->id)->get()
+            'tanggapans' => Tanggapan::where('id_pengaduan', $pengaduan->id)->with('user')->get()
         ]);
     }
 
@@ -119,7 +119,7 @@ class dashboardController extends Controller
         return view('dashboard.tanggapan', [
             'title' => 'tanggapan',
             'pengaduan' => $pengaduan,
-            'tanggapans' => Tanggapan::where('id_pengaduan', $pengaduan->id)->get()
+            'tanggapans' => Tanggapan::where('id_pengaduan', $pengaduan->id)->with('user')->get()
         ]);
     }
     public function selesai(Request $request, Pengaduan $pengaduan)
@@ -151,7 +151,7 @@ class dashboardController extends Controller
     public function users() {
         return view('dashboard.ubahUser', [
             'title' => 'Users',
-            'users' => User::latest()->get()
+            'users' => User::latest()->with('user')->get()
         ]);
     }
 

@@ -36,14 +36,14 @@ Route::get('/laporansaya/proses', [userController::class, 'proses'])->middleware
 Route::get('/laporansaya/selesai', [userController::class, 'selesai'])->middleware('auth');
 
 
-Route::get('/dashboard/laporan', [dashboardController::class, 'index']);
-Route::get('/dashboard/tanggapan/{pengaduan}', [dashboardController::class, 'show']);
-Route::post('/dashboard/tanggapan/{pengaduan}', [dashboardController::class, 'tanggapan']);
-Route::get('/dashboard/proses/{pengaduan}', [dashboardController::class, 'proses']);
-Route::get('/dashboard/selesai/{pengaduan}', [dashboardController::class, 'selesai']);
-Route::get('/dashboard/batalproses/{pengaduan}', [dashboardController::class, 'batal']);
-Route::get('/dashboard/belum', [dashboardController::class, 'belumView']);
-Route::get('/dashboard/proses', [dashboardController::class, 'prosesView']);
-Route::get('/dashboard/selesai', [dashboardController::class, 'selesaiView']);
-Route::get('/dashboard/users', [dashboardController::class, 'users']);
-Route::post('/dashboard/ubahlevel/{user}', [dashboardController::class, 'update']);
+Route::get('/dashboard/laporan', [dashboardController::class, 'index'])->middleware('petugas');
+Route::get('/dashboard/tanggapan/{pengaduan}', [dashboardController::class, 'show'])->middleware('petugas');
+Route::post('/dashboard/tanggapan/{pengaduan}', [dashboardController::class, 'tanggapan'])->middleware('petugas');
+Route::get('/dashboard/proses/{pengaduan}', [dashboardController::class, 'proses'])->middleware('petugas');
+Route::get('/dashboard/selesai/{pengaduan}', [dashboardController::class, 'selesai'])->middleware('petugas');
+Route::get('/dashboard/batalproses/{pengaduan}', [dashboardController::class, 'batal'])->middleware('petugas');
+Route::get('/dashboard/belum', [dashboardController::class, 'belumView'])->middleware('petugas');
+Route::get('/dashboard/proses', [dashboardController::class, 'prosesView'])->middleware('petugas');
+Route::get('/dashboard/selesai', [dashboardController::class, 'selesaiView'])->middleware('petugas');
+Route::get('/dashboard/users', [dashboardController::class, 'users'])->middleware('admin');
+Route::post('/dashboard/ubahlevel/{user}', [dashboardController::class, 'update'])->middleware('admin');
