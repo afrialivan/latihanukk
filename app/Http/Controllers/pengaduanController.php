@@ -86,9 +86,11 @@ class pengaduanController extends Controller
      * @param  \App\Models\Pengaduan  $pengaduan
      * @return \Illuminate\Http\Response
      */
-    public function edit(Pengaduan $pengaduan)
+    public function home()
     {
-        //
+        return view('home', [
+            'title' => 'home'
+        ]);
     }
 
     /**

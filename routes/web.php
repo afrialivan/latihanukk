@@ -20,6 +20,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', [pengaduanController::class, 'index']);
+Route::get('/home', [pengaduanController::class, 'home']);
 Route::get('/login', [loginController::class, 'index'])->name('login');
 Route::post('/login', [loginController::class, 'login']);
 Route::get('/logout', [loginController::class, 'logout']);
