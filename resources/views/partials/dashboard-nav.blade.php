@@ -17,12 +17,6 @@
                         User
                     </a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="/dashboard/cetak">
-                        <i class="fa-solid fa-download"></i>
-                        Cetak Laporan
-                    </a>
-                </li>
             </ul>
         @endcan
         <ul class="nav flex-column mb-2">

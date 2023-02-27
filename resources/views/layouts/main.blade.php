@@ -21,6 +21,9 @@
 </head>
 
 <body class="position-relative">
+
+    {{-- <img src="img/bgcuy.svg" alt=""> --}}
+
     @if ($title !== 'login' && $title !== 'register')
         @include('partials.navbar')
     @endif
@@ -66,6 +69,7 @@
         </div>
     @endif
 
+    
     <div class="container mt-4">
         @yield('container')
     </div>

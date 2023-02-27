@@ -35,6 +35,7 @@
 
     <!-- Custom styles for this template -->
     <link href="{{ $title == 'tanggapan' ? '../' : '' }}../css/dashboard.css" rel="stylesheet">
+    <link href="{{ $title == 'tanggapan' ? '../' : '' }}../css/cetak.css" rel="stylesheet">
 </head>
 
 <body>

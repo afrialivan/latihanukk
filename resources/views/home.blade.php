@@ -14,6 +14,7 @@
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/darkmode.css">
     <link rel="stylesheet" href="css/homeButton.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
 
     <title>Home</title>
 </head>
@@ -37,8 +38,8 @@
 
         <div class="row align-items-center">
             <div class="col-lg-6">
-                <p class="h1 fw-bold text-light">Layanan Aspirasi dan Pengaduan Online Rakyat</p>
-                <p class="fs-4 text-light">Sampaikan laporan Anda kapan saja dan dimana saja</p>
+                <p class="h1 fw-bold text-light header-text">Layanan Aspirasi dan Pengaduan Online Rakyat</p>
+                <p class="fs-4 text-light header-text">Sampaikan laporan Anda kapan saja dan dimana saja</p>
                 <form action="/login">
                     <button class="cssbuttons-io-button"> Get started
                         <div class="icon">
@@ -53,10 +54,14 @@
                 </form>
             </div>
             <div class="col-lg-6">
-                <img src="img/home.svg" style="width: 600px;" class="d-block m-auto" alt="">
+                <img src="img/home.svg" style="width: 600px;" class="d-lg-block d-none m-auto" alt="">
             </div>
         </div>
     </div>
+
+    <section>
+
+    </section>
 
 
 

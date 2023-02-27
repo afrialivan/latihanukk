@@ -23,3 +23,8 @@
   height: 60vh;
   background-color: #0090d4;
 }
+
+.header-text {
+  animation: bounceIn; /* referring directly to the animation's @keyframe declaration */
+  animation-duration: 1s; /* don't forget to set a duration! */
+}
