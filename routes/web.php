@@ -51,5 +51,6 @@ Route::group(['middleware' => 'petugas'], function () {
     Route::get('/dashboard/users', [dashboardController::class, 'users']);
     Route::post('/dashboard/ubahlevel/{user}', [dashboardController::class, 'update']);
     Route::get('/dashboard/cetak', [dashboardController::class, 'export']);
+    Route::get('/cetak', [dashboardController::class, 'cetak']);
   });
 });

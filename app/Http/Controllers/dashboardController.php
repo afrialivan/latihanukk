@@ -3,6 +3,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Exports\PengaduansExport;
 use App\Models\Pengaduan;
 use App\Models\Tanggapan;
 use App\Models\User;
@@ -136,7 +137,7 @@ class dashboardController extends Controller
 
         return redirect('/dashboard/laporan');
     }
-    
+
     public function batal(Request $request, Pengaduan $pengaduan)
     {
         Pengaduan::where('id', $pengaduan->id)->update([
@@ -150,7 +151,8 @@ class dashboardController extends Controller
         return redirect('/dashboard/laporan');
     }
 
-    public function users() {
+    public function users()
+    {
         return view('dashboard.ubahUser', [
             'title' => 'Users',
             'users' => User::latest()->paginate(10),
@@ -168,7 +170,7 @@ class dashboardController extends Controller
      */
     public function update(Request $request, User $user)
     {
-        
+
         $validasi = $request->validate([
             'level' => 'required'
         ]);
@@ -184,7 +186,8 @@ class dashboardController extends Controller
         return redirect('dashboard/users');
     }
 
-    public function export() {
+    public function export()
+    {
         return Excel::download(new UsersExport, 'users.xlsx');
     }
 
@@ -197,5 +200,12 @@ class dashboardController extends Controller
     public function destroy(Pengaduan $pengaduan)
     {
         //
+    }
+
+
+
+    public function cetak()
+    {
+        return Excel::download(new PengaduansExport, 'invoices.xlsx');
     }
 }
