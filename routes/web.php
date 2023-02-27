@@ -26,25 +26,29 @@ Route::get('/logout', [loginController::class, 'logout']);
 Route::get('/register', [registerController::class, 'index']);
 Route::post('/register', [registerController::class, 'store']);
 
+Route::group(['middleware' => 'auth'], function () {
+  Route::post('/pengaduan', [pengaduanController::class, 'store'])->middleware('auth');
+  Route::get('/tanggapan/{pengaduan}', [pengaduanController::class, 'show'])->middleware('auth');
+  Route::get('/semualaporan', [pengaduanController::class, 'all'])->middleware('auth');
+  Route::get('/laporansaya/semua', [userController::class, 'index'])->middleware('auth');
+  Route::get('/laporansaya/belum', [userController::class, 'belum'])->middleware('auth');
+  Route::get('/laporansaya/proses', [userController::class, 'proses'])->middleware('auth');
+  Route::get('/laporansaya/selesai', [userController::class, 'selesai'])->middleware('auth');
+});
 
-Route::post('/pengaduan', [pengaduanController::class, 'store'])->middleware('auth');
-Route::get('/tanggapan/{pengaduan}', [pengaduanController::class, 'show'])->middleware('auth');
-Route::get('/semualaporan', [pengaduanController::class, 'all'])->middleware('auth');
-Route::get('/laporansaya/semua', [userController::class, 'index'])->middleware('auth');
-Route::get('/laporansaya/belum', [userController::class, 'belum'])->middleware('auth');
-Route::get('/laporansaya/proses', [userController::class, 'proses'])->middleware('auth');
-Route::get('/laporansaya/selesai', [userController::class, 'selesai'])->middleware('auth');
-
-
-Route::get('/dashboard/laporan', [dashboardController::class, 'index'])->middleware('petugas');
-Route::get('/dashboard/tanggapan/{pengaduan}', [dashboardController::class, 'show'])->middleware('petugas');
-Route::post('/dashboard/tanggapan/{pengaduan}', [dashboardController::class, 'tanggapan'])->middleware('petugas');
-Route::get('/dashboard/proses/{pengaduan}', [dashboardController::class, 'proses'])->middleware('petugas');
-Route::get('/dashboard/selesai/{pengaduan}', [dashboardController::class, 'selesai'])->middleware('petugas');
-Route::get('/dashboard/batalselesai/{pengaduan}', [dashboardController::class, 'batal'])->middleware('petugas');
-Route::get('/dashboard/belum', [dashboardController::class, 'belumView'])->middleware('petugas');
-Route::get('/dashboard/proses', [dashboardController::class, 'prosesView'])->middleware('petugas');
-Route::get('/dashboard/selesai', [dashboardController::class, 'selesaiView'])->middleware('petugas');
-Route::get('/dashboard/users', [dashboardController::class, 'users'])->middleware('admin');
-Route::post('/dashboard/ubahlevel/{user}', [dashboardController::class, 'update'])->middleware('admin');
-Route::get('/dashboard/cetak', [dashboardController::class, 'export'])->middleware('admin');
+Route::group(['middleware' => 'petugas'], function () {
+  Route::get('/dashboard/laporan', [dashboardController::class, 'index']);
+  Route::get('/dashboard/tanggapan/{pengaduan}', [dashboardController::class, 'show']);
+  Route::post('/dashboard/tanggapan/{pengaduan}', [dashboardController::class, 'tanggapan']);
+  Route::get('/dashboard/proses/{pengaduan}', [dashboardController::class, 'proses']);
+  Route::get('/dashboard/selesai/{pengaduan}', [dashboardController::class, 'selesai']);
+  Route::get('/dashboard/batalselesai/{pengaduan}', [dashboardController::class, 'batal']);
+  Route::get('/dashboard/belum', [dashboardController::class, 'belumView']);
+  Route::get('/dashboard/proses', [dashboardController::class, 'prosesView']);
+  Route::get('/dashboard/selesai', [dashboardController::class, 'selesaiView']);
+  Route::group(['middleware' => 'admin'], function () {
+    Route::get('/dashboard/users', [dashboardController::class, 'users']);
+    Route::post('/dashboard/ubahlevel/{user}', [dashboardController::class, 'update']);
+    Route::get('/dashboard/cetak', [dashboardController::class, 'export']);
+  });
+});
